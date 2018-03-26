@@ -1,0 +1,48 @@
+<template name="filterHelperTable">
+	{{#unless error}}
+	<table class="{{#if class}}{{class}}{{/if}}">
+		{{#if headerTemplate}}
+			{{> Template.dynamic template=headerTemplate}}
+		{{else}}
+			{{> Template.dynamic template="filterHelperTable__head" data=helpers}}
+		{{/if}}
+
+		<tbody>
+			{{#each item in items}}
+				{{> filterHelperTable__row item=item}}
+			{{/each}}
+		</tbody>
+	</table>
+	{{else}}
+		{{error}}
+	{{/unless}}
+</template>
+
+<template name="filterHelperTable__head">
+	<thead>
+		<tr>
+			{{#if checkable}}
+				<th> <input type="checkbox"> <i class="fa fa-fw fa-sort"></i> </th>
+			{{/if}}
+
+			{{#each heading in headings}}
+				<th data-key="{{heading.key}}" class="{{#if getSort heading.key}}sortable{{/if}}"> {{heading.label}}
+					{{#if getSort heading.key}}
+						{{#if (getSort heading.key "asc")}}<i class="fa fa-fw fa-sort-up"></i>{{/if}} 
+						{{#if (getSort heading.key "desc")}}<i class="fa fa-fw fa-sort-down"></i>{{/if}}
+						{{#if (getSort heading.key "none")}}<i class="fa fa-fw fa-sort"></i>{{/if}}
+					{{/if}}
+				</th>
+			{{/each}}
+		</tr>
+	</thead>
+</template>
+
+<template name="filterHelperTable__row">
+	<tr>
+		<th> <input type="checkbox"> </th>
+		{{#each val in item}}
+			<td> {{val}} </td>
+		{{/each}}
+	</tr>
+</template>

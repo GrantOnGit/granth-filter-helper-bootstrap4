@@ -1,0 +1,25 @@
+<template name="filterHelperPaginationPages">
+
+	<ul class="pagination">
+		<li class="page-prev page-item {{#unless hasPrev}}disabled{{/unless}}">
+			<a class="page-link" href="#"> Prev </a>
+		</li>
+		
+		{{#each page in pages}}
+			{{> filterHelperPaginationPage page=page current=currentPage}}
+		{{/each}}
+
+		<li class="page-next page-item {{#unless hasNext}}disabled{{/unless}}">
+			<a class="page-link" href="#"> Next </a>
+		</li>
+	</ul>
+
+</template>
+
+<template name="filterHelperPaginationPage">
+
+	<li class="page-button page-item {{#if eq current page}}active{{/if}}" data-page="{{page}}">
+		<a class="page-link" href="#"> {{page}} </a>
+	</li>
+
+</template>

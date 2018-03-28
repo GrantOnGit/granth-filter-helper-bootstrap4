@@ -1,6 +1,6 @@
 Package.describe({
   name: 'granth:filter-helper-bootstrap4',
-  version: '0.0.1',
+  version: '0.0.2',
   // Brief, one-line summary of the package.
   summary: 'Bootstrap 4 templates for the granth:filter-helper package.',
   // URL to the Git repository containing the source code for this package.
@@ -20,6 +20,12 @@ Package.onUse(function(api) {
   api.addFiles([
     'table/table.html',
     'table/table.js',
+    'pagination/pagination.html',
+    'pagination/pagination.js',
+    'pagination/pages.html',
+    'pagination/pages.js',
+    'pagination/per-page.html',
+    'pagination/per-page.js',
   ], 'client');
 
   api.mainModule('all.js', 'client');
